@@ -20,3 +20,63 @@ def getAllEntries():
     """
 
     return(['AB000123', 'AB000321', 'AC001564'])
+
+# Identifier  (eg. BAA22866)
+
+def id():
+    id='BAA22866'
+    return(id)
+
+# Protein Product Name  (eg. glycosylphosphatidylinositol)
+
+def ppn():
+    ppn='glycosylphosphatidylinositol'
+    return(ppn)
+
+# Genbank Accession  (eg. ABB08360)
+
+def genbank_acc():
+    genbank_acc='ABB08360'
+    return(genbank_acc)
+
+# Chromosomal Accession  (eg. 8q24.3)
+
+def chrom_acc():
+    chrom_acc='8q24.3'
+    return(chrom_acc)
+
+# CDS DNA String  (eg. gatcctccat)
+
+def CDS_DNA_string():
+    CDS_DNA_string='gatcctccat atacaacggt atctccacct caggtttaga tctcaacaac ggaaccattg'
+    return(CDS_DNA_string)
+
+# CDS amino acid string  (eg. MNRWVEKWLRVY)
+
+def CDS_aa_string():
+    CDS_aa_string='MNRWVEKWLRVYLKCYINLILFYRNVYPPQSFDYTTYQSFNLPQ'
+    return(CDS_aa_string)
+
+# whole genome DNA String  (eg. gatcctccat)
+
+
+def whole_chromosome():
+    whole_chromosome = 'gatcctccat atacaacggt atctccacct caggtttaga tctcaacaac ggaaccattg gatcctccat atacaacggt atctccacct caggtttaga tctcaacaac ggaaccattg gatcctccat atacaacggt atctccacct caggtttaga tctcaacaac ggaaccattg'
+    return(whole_chromosome)
+
+# list of codons (eg. [UUU,UUG,UUA])
+
+def codons():
+    codons=['UUU','UUG','UUA']
+    return(codons)
+
+
+# Restriction enzyme sequence dictionary (eg. [UUU,UUG,UUA])
+
+def restriction_enz():
+    restriction_enz={'EcoRI':'gattc', 'BamHI':'ggcct','BsuMI':'ccctta']
+    return(restriction_enz)
+
+
+
+
