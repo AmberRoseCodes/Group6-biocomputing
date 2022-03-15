@@ -39,11 +39,15 @@ def genbank_acc():
     genbank_acc='ABB08360'
     return(genbank_acc)
 
-# Chromosomal Accession  (eg. 8q24.3)
+# Chromosomal Locations  (eg. 8q24.3)
 
-def chrom_acc():
-    chrom_acc='8q24.3'
-    return(chrom_acc)
+def CDS_boundary_location():
+    CDS_boundary_location=[1000,3000]
+    return(CDS_boundary_location)
+
+def Coding_regions():
+    Coding_regions=[[1050,1070][2050,2030]]  
+
 
 # CDS DNA String  (eg. gatcctccat)
 
