@@ -14,9 +14,9 @@ sys.path.insert(0, "../")
 
 import cgi        # Import the CGI module
 
-import blapi      # Import the Business Logic API
+import blapi_dummy      # Import the Business Logic API
 import htmlutils  # Import HTML utilities
-import config     # Import configuration information (e.g. URLs)
+#import config     # Import configuration information (e.g. URLs)
 
 form = cgi.FieldStorage()
 accession = str(form.getvalue('ac'))
@@ -24,10 +24,14 @@ accession = str(form.getvalue('ac'))
 #result = blapi.search(someParam from form)
 
 html    = htmlutils.header()
-html += "<h1>Dummy search code</h1>\n"
+html += "<h1>Detailed Genbank Results</h1>\n"
 html += "      <ul>\n"
-html += "        <li>Result of search for '" + accession + "'</li>\n"
-html += "      </ul>\n"
+html += "Result of search for Accession Number :  " + accession + "<ul>\n"
+
+html += blapi_dummy.ppn() + "<ul>\n"
+
+html += blapi_dummy.CDS_DNA_string() + "<ul>\n"
+
 html += htmlutils.footer()
 
 print(html)
