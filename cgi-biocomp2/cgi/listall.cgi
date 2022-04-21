@@ -21,9 +21,9 @@ html    = htmlutils.header()
 
 html += "  <table>\n"
 html += "<tr><th style='background-color: yellow'>Accession Number</th>"
-html += "<th>Gene ID</th>"
-html += "<th>Protien Product Name</th>"
-html += "<th>Chromosomal Location</th></tr>\n"
+html += "<th style='background-color: green'>Gene ID</th>"
+html += "<th style='background-color: red'>Protien Product Name</th>"
+html += "<th style='background-color: blue'>Chromosomal Location</th></tr>\n"
 
 for d in entries:
         html += "<tr><td>" + "<a href='" + config.searchurl + "?ac=" + d.get('acc') + "'>"+ d.get('acc') + "</a>""</td>"
@@ -39,11 +39,4 @@ html += htmlutils.footer()
 print(html)
 
 
-#<td>Hi, I'm your first cell.</td>
-#Copy to Clipboard
-#If we want a row of four cells, we need to copy these tags three times. Update the contents of your table to look like so:
-#<td>Hi, I'm your first cell.</td>
-#<td>I'm your second cell.</td>
-#<td>I'm your third cell.</td>
-#<td>I'm your fourth cell.</td>
 

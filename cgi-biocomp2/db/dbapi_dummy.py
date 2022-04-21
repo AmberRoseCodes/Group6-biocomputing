@@ -19,30 +19,21 @@ def getAllEntries():
     return a list of dictionaries and would access the MySQL database
     """
 
-    return([{'acc':'AB000321', 'gene_id':'gh56', 'ppn':'glucoselipid', 'chrom_loc':'103..600'},{'acc':'AB000322', 'gene_id':'gkk56', 'ppn':'glucoselipid-2', 'chrom_loc':'203..650'}])
+    return([{'acc':'AB000321', 'gene_id':'gh56', 'ppn':'glucoselipid', 'chrom_loc':'103..600','CDS_DNA_String':'test 1 gatcctccat atacaacggt atctccacct caggtttaga tctcaacaac ggaaccattg','CDS_aa_string':'test 1 MNRWVEKWLRVYLKCYINLILFYRNVYPPQSFDYTTYQSFNLPQ'},{'acc':'AB000322', 'gene_id':'gkk56', 'ppn':'glucoselipid-2', 'chrom_loc':'203..650','CDS_DNA_String':'test 2 gatcctccat atacaacggt atctccacct caggtttaga tctcaacaac ggaaccattg', 'CDS_aa_string':'test 2 MNRWVEKWLRVYLKCYINLILFYRNVYPPQSFDYTTYQSFNLPQ'},{'acc':'AB000323', 'gene_id':'gfdk56', 'ppn':'glucoselipid-3', 'chrom_loc':'403..950','CDS_DNA_String':'test 3 gatcctccat atacaacggt atctccacct caggtttaga tctcaacaac ggaaccattg', 'CDS_aa_string':'test 3 MNRWVEKWLRVYLKCYINLILFYRNVYPPQSFDYTTYQSFNLPQ'}])
 
 
-
-# whole genome DNA String  (eg. gatcctccat)
-
-
-def whole_chromosome():
-    whole_chromosome = 'gatcctccat atacaacggt atctccacct caggtttaga tctcaacaac ggaaccattg gatcctccat atacaacggt atctccacct caggtttaga tctcaacaac ggaaccattg gatcctccat atacaacggt atctccacct caggtttaga tctcaacaac ggaaccattg'
-    return(whole_chromosome)
-
-# list of codons (eg. [UUU,UUG,UUA])
 
 def codons():
-    codons=['UUU','UUG','UUA']
+    codons=['uuu','uuc','uua','uug','auu','auc','aua','aug','guu','guc','gua','gug','ucu','ucc','uca','ucg','cuu','cuc','cua','cug','ccu','ccc','cca',
+'ccg','acu','acc','aca','acg','gcu','gcc','gca','gcg','uau','uac','uaa','uag','cau','cac','caa','cag','aau','aac','aaa','aag','gau','gac','gaa','gag',
+'ugu','ugc','uga','ugg','cgu','cgc','cga','cgg','agu','agc','aga','agg','ggu','ggc','gga','ggg'
+]
     return(codons)
 
+def sticky_ends():
+    
+# Dictionary contains the regognition site for each enzyme, and the index at which it leaves a sticky end on the enzyme, in each case the recognition site is noted from the 5 prime end
 
-# Restriction enzyme sequence dictionary (eg. [UUU,UUG,UUA])
+    sticky_ends={'EcoRI':['gaattc',0], 'BamHI':['ggatcc',0], 'BsuMI':['acctgc',9]}
 
-#def restriction_enz():
-#    restriction_enz=['EcoRI':'gattc', 'BamHI':'ggcct','BsuMI':'ccctta']
-#    return(restriction_enz)
-
-
-
-
+    return(sticky_ends)
