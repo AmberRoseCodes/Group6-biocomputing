@@ -42,11 +42,17 @@ html += "  </table>\n"
 
 html += "<h3>Codon Frequency in CDS DNA String</h3>\n"
 
-html += "  <table>\n"
+html += '  <table border="2">\n'
 
+html += '<tr>'
+x = 0
 for codon in codon_count_table:
-    html += "<tr><td>" + codon + "</td></tr>"
-
+    if x % 10 == 0:
+        html += "</tr>"
+        html += "<tr>"
+    html += "<td>" + codon + "</td>"
+    x += 1
+html += "</tr>"
 html += "  </table>\n"
 
 
