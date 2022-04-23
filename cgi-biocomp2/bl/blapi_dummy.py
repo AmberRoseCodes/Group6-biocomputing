@@ -54,9 +54,9 @@ def chrom_loc(ac):
 
 # CDS Coding Region 
 
-def CDS_DNA_String(ac):
-    CDS_DNA_String=getAnEntry(ac)['CDS_DNA_String']
-    return(CDS_DNA_String)
+def CDS_DNA_string(ac):
+    CDS_DNA_string=getAnEntry(ac)['CDS_DNA_string']
+    return(CDS_DNA_string)
 
 # CDS Amino Acid Seq
 
@@ -76,8 +76,10 @@ def translate(DNA):
 
 def codon_count(ac):
     counts=[]
+    rna = translate(CDS_DNA_string(ac).lower())
+    rna_codon = [rna[i:i+3] for i in range(0,len(rna), 3)]
     for i in dbapi_dummy.codons():
-        count = translate(CDS_DNA_String(ac)).count(i)
+        count = rna_codon.count(i)
         string = i + ' : ' + str(count) + '   '
         counts.append(string)
     return(counts)
@@ -86,7 +88,7 @@ def codon_count(ac):
 def sticky_ends_loc(ac,enzyme):
     matches=[]
     recognition_site=sticky_ends()[enzyme][0]
-    for m in re.finditer(recognition_site, CDS_DNA_String(ac)):
+    for m in re.finditer(recognition_site, CDS_DNA_string(ac)):
         matches.append(m.start()+sticky_ends()[enzyme][1])
     return(matches)  
     

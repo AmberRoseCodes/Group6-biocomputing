@@ -34,7 +34,7 @@ html += "<tr><td>Gene ID: </td>" + "<td>"  + blapi_dummy.gene_id(accession) + "<
 
 html += "<tr><td>Chromosomal Location: </td>" + "<td>"  + blapi_dummy.chrom_loc(accession) + "</td></tr>"
 
-html += "<tr><td>CDS DNA String: </td>" + "<td>"  + blapi_dummy.CDS_DNA_String(accession) + "</td></tr>"
+html += "<tr><td>CDS DNA String: </td>" + "<td>"  + blapi_dummy.CDS_DNA_string(accession) + "</td></tr>"
 
 html += "<tr><td>CDS AA String: </td>" + "<td>"  + blapi_dummy.CDS_aa_string(accession) + "</td></tr>"
 

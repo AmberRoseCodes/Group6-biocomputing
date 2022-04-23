@@ -47,7 +47,7 @@ print(
         <a href='""" + config.listallurl + """'>List all entries</a>
       </p>
       
-      <form action='""" + config.searchurl + """' method='get'>
+      <form action='""" + config.listallurl + """' method='get'>
         <p>Search by:</p>
         
         <table>
@@ -61,7 +61,7 @@ print(
           </tr>
           <tr>
             <td>protein product</td>
-            <td><input type='text' name='protein'/></td>
+            <td><input type='text' name='ppn'/></td>
           </tr>
           <tr>
             <td>chromosomal location</td>
