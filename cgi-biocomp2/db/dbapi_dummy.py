@@ -19,6 +19,7 @@ def getAllEntries():
     dbuser = 'ed001'
     dbpassword = 'w3jatiunb'
 
+
     sql = 'select * from chromosome_1 LIMIT 20'
 
     db = pymysql.connect(host=dbhost, user = dbuser, db = dbname, passwd = dbpassword)
@@ -60,3 +61,8 @@ def sticky_ends():
     sticky_ends={'EcoRI':['gaattc',0], 'BamHI':['ggatcc',0], 'BsuMI':['acctgc',9]}
 
     return(sticky_ends)
+
+
+
+
+
