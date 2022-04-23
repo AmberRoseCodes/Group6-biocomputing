@@ -1,18 +1,4 @@
-#!/usr/bin/env python3
-"""
-...Comment header goes here...
-
-Simple script to generate the index.html file so that we can pick up
-configuration information from the config file.
-"""
-
-# Add the CGI directory which is where the config file lives
-import sys
-sys.path.insert(0, "../cgi-biocomp2")
-import config
-
-print(
-"""<!DOCTYPE html>
+<!DOCTYPE html>
 
 <!-- A header comment goes here
 -->
@@ -44,10 +30,10 @@ print(
       </p>
       
       <p>
-        <a href='""" + config.listallurl + """'>List all entries</a>
+        <a href='/cgi-bin/cgiwrap/ed001/biocomp2demo/cgi/listall.cgi'>List all entries</a>
       </p>
       
-      <form action='""" + config.listallurl + """' method='get'>
+      <form action='/cgi-bin/cgiwrap/ed001/biocomp2demo/cgi/listall.cgi' method='get'>
         <p>Search by:</p>
         
         <table>
@@ -75,4 +61,4 @@ print(
     </div> <!-- content -->
   </body>
 </html>
-""")
+
