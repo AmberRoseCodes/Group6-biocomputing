@@ -54,13 +54,6 @@ def codons():
 ]
     return(codons)
 
-def sticky_ends():
-    
-# Dictionary contains the regognition site for each enzyme, and the index at which it leaves a sticky end on the enzyme, in each case the recognition site is noted from the 5 prime end
-
-    sticky_ends={'EcoRI':['gaattc',0], 'BamHI':['ggatcc',0], 'BsuMI':['acctgc',9]}
-
-    return(sticky_ends)
 
 
 

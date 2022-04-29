@@ -13,7 +13,7 @@ sys.path.insert(0, "../")
 
 import dbapi_dummy   # Import the database api
 #import config  # Import configuration information (if needed)
-import re
+import re 
 
 def getAllEntries():
     """
@@ -64,6 +64,12 @@ def CDS_aa_string(ac):
     CDS_aa_string=getAnEntry(ac)['CDS_aa_string']
     return(CDS_aa_string)
 
+# joins
+
+def joins(ac):
+    joins=getAnEntry(ac)['joins']
+    return(joins)
+
 
 # Translate function
 
@@ -84,6 +90,15 @@ def codon_count(ac):
         counts.append(string)
     return(counts)
 
+def sticky_ends():
+    
+# Dictionary contains the regognition site for each enzyme, and the index at which it leaves a sticky end on the enzyme, in each case the recognition site is noted from the 5 prime end
+
+    sticky_ends={'EcoRI':['GAATTC',0], 'BamHI':['GGATCC',0], 'BsuMI':['ACCTGC',9]}
+
+    return(sticky_ends)
+
+
 
 def sticky_ends_loc(ac,enzyme):
     matches=[]
@@ -91,68 +106,54 @@ def sticky_ends_loc(ac,enzyme):
     for m in re.finditer(recognition_site, CDS_DNA_string(ac)):
         matches.append(m.start()+sticky_ends()[enzyme][1])
     return(matches)  
-    
+ 
+
+def sticky_ends_inplace(ac): 
+    l=[]
+    for n in CDS_DNA_string(ac):
+        l.append('-')
+    for i in sticky_ends():
+        se=sticky_ends_loc(ac,i)
+        x=0
+        for n in l:
+            if x in se :
+                l[x]=i
+            elif l[x]=='-':
+                l[x]='-'
+            x+=1
+    return(l)
 
 
+# Create a string to find all the exons
 
+def cleaned_joins(ac):
+    x=False
+    join_string=joins(ac)
+    matches=[]
+    start_r='\'([0-9]+)\.\.'
+    end_r='\.\.([0-9]+)\''
+    start=re.findall(start_r,join_string)
+    end=re.findall(end_r,join_string)
+    exons_joined=[]
+    x=0
+    for i in start:
+        exon=[]
+        exon=tuple((int(i),int(end[x])))
+        x+=1
+        exons_joined.append(exon)
+    exons_joined.sort
+    return(exons_joined)
 
+def find_exons(ac):
+    exons_joined=cleaned_joins(ac)
+    m=[]
+    for n in CDS_DNA_string(ac):
+        m.append('-')
 
+    for n in range(len(m)):
+        for a,b in exons_joined: 
+            if n>a and n<b:
+                m[n]='*'
 
-
-#---------------------------------
-# FRONT PAGE VARIABLES
-
-# Identifier  (eg. BAA22866)
-
-def id():
-    id='BAA22866'
-    return(id)
-
-# Protein Product Name  (eg. glycosylphosphatidylinositol)
-
-def ppn():
-    ppn='glycosylphosphatidylinositol'
-    return(ppn)
-
-# Genbank Accession  (eg. ABB08360)
-
-def genbank_acc():
-    genbank_acc='ABB08360'
-    return(genbank_acc)
-
-# Chromosomal Accession  (eg. 8q24.3)
-
-def chrom_acc():
-    chrom_acc='8q24.3'
-    return(chrom_acc)
-
-#---------------------------------------
-# DETAIL PAGE VARIABLES
-
-# CDS Coding Region / Sticky end restriction enzymes / full origin sequence
-
-def CDS_DNA_string():
-    CDS_DNA_string='gatcctccat atacaacggt atctccacct caggtttaga tctcaacaac ggaaccattg'
-    return(CDS_DNA_string)
-
-def sticky_ends():
-    sticky_end_EcoRI=[10, 20]
-    sticky_end_BamHI=[5, 18]
-    sticky_end_BsuMI=[8, 22]
-    sticky_end_optional=[15, 25]
-    return(sticky_EndEcoRI, sticky_end_BamHI, sticky_end_BsuMI, sticky_end_optional)
-
-# CDS Amino Acid Seq
-
-def CDS_aa_string():
-    CDS_aa_string='MNRWVEKWLRVYLKCYINLILFYRNVYPPQSFDYTTYQSFNLPQ'
-    return(CDS_aa_string)
-
-# Entry Codon Useage Frequence / Whole chormosome Codon Useage Frequency
-
-def codon_useage():
-    A = [['UUU', 'UUG', 'UGA', 'TAG'], 
-    [1.18, 0.8, 1.9, 0.5],
-    [2, 0.8, 1.1, 1.9]]
-
+    return(m)
 
