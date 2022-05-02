@@ -36,8 +36,9 @@ def getAllEntries():
         d['gene_id']=row[2]
         d['chrom_loc']=row[3]
         d['CDS_aa_string']=row[4]
-        d['CDS_DNA_string']=row[5]
-        d['joins']=row[6]
+        d['complement']=row[5]
+        d['CDS_DNA_string']=row[6]
+        d['joins']=row[7]
         
         l.append(d)
     

@@ -64,14 +64,31 @@ def joins(ac):
     joins=getAnEntry(ac)['joins']
     return(joins)
 
+# complement
+
+def complement(ac):
+    copmlement=getAnEntry(ac)['complement']
+    return(complement)
+
+# Translate 
+
+def translate(DNA):
+  n_trans_dict = {'G': 'C', 'C': 'G', 'A': 'T', 'T': 'A'}
+  transtable = DNA.maketrans(n_trans_dict)
+  rna = DNA.translate(transtable)
+  return(rna)
 
 # CDS Coding Region 
 
 def CDS_DNA_string(ac):
 
-# Returns the full origin CDS sequence from the genbank file 
+# Returns the full origin CDS sequence from the genbank file, translating the string if it is flagged as being a complementary strand
 
-    CDS_DNA_string=getAnEntry(ac)['CDS_DNA_string']
+    if complement(ac) == '1':
+        CDS_DNA_string=translate(getAnEntry(ac)['CDS_DNA_string'])
+    else: 
+        CDS_DNA_string=getAnEntry(ac)['CDS_DNA_string']
+
     return(CDS_DNA_string)
 
 # Create a  list of tuples with all exon locations (Input: Accession Number)
@@ -126,7 +143,7 @@ def exon_DNA_string(ac):
 
 
 def transcribe(DNA):
-  n_trans_dict = {'U': 'T'}
+  n_trans_dict = {'T': 'U'}
   transtable = DNA.maketrans(n_trans_dict)
   rna = DNA.translate(transtable)
   return(rna)
