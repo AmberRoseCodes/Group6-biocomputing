@@ -102,10 +102,13 @@ def exon_tuples(ac):
     exon_tuples=[]
     x=0
     for i in start:
-        exon=[]
-        exon=tuple((int(i),int(end[x])))
-        x+=1
+        
+        try:
+            exon=tuple((int(i),int(end[x])))
+        except:
+            pass
         exon_tuples.append(exon)
+        x+=1
     exon_tuples.sort
     return(exon_tuples)
 
@@ -158,13 +161,36 @@ def codons():
 ]
     return(codons)
 
+def chromosome_codons():
+
+    total_codon_presence={'UUU':0,'UUC':0,'UUA':0,'UUG':0,'AUU':0,'AUC':0,'AUA':0,'AUG':0,'GUU':0,'GUC':0,'GUA':0,'GUG':0,'UCU':0,'UCC':0,'UCA':0,'UCG':0,'CUU':0,'CUC':0,'CUA':0,'CUG':0,'CCU':0,'CCC':0,'CCA':0,
+    'CCG':0,'ACU':0,'ACC':0,'ACA':0,'ACG':0,'GCU':0,'GCC':0,'GCA':0,'GCG':0,'UAU':0,'UAC':0,'UAA':0,'UAG':0,'CAU':0,'CAC':0,'CAA':0,'CAG':0,'AAU':0,'AAC':0,'AAA':0,'AAG':0,'GAU':0,'GAC':0,'GAA':0,'GAG':0,
+    'UGU':0,'UGC':0,'UGA':0,'UGG':0,'CGU':0,'CGC':0,'CGA':0,'CGG':0,'AGU':0,'AGC':0,'AGA':0,'AGG':0,'GGU':0,'GGC':0,'GGA':0,'GGG':0}
+
+    for i in getAllEntries():
+        rna = transcribe(exon_DNA_string(i['acc']))
+        rna_codon = [rna[i:i+3] for i in range(0,len(rna), 3)]
+        for i in codons():
+            count = rna_codon.count(i)
+            total_codon_presence[i]+=count
+            
+    total_codon_count=sum(total_codon_presence.values())
+    
+    for i in total_codon_presence:
+        total_codon_presence[i]=total_codon_presence[i]/ total_codon_count
+
+    return(total_codon_presence)
+
 def codon_count(ac):
     counts=[]
+    total_no_codons=len(exon_DNA_string(ac))//3
     rna = transcribe(exon_DNA_string(ac))
     rna_codon = [rna[i:i+3] for i in range(0,len(rna), 3)]
+    chromosome_codon_percent = chromosome_codons()
+    
     for i in codons():
         count = rna_codon.count(i)
-        string = i + ' : ' + str(count) + '   '
+        string = i + ' : ' + str(count) + ' /  ' + str(round((count/total_no_codons)*100,2)) +'% /   ' + str(round((chromosome_codon_percent[i])*100,2)) +'%   '
         counts.append(string)
     return(counts)
 
@@ -205,6 +231,50 @@ def sticky_ends_inplace(ac):
                 l[x]='-'
             x+=1
     return(l)
+
+
+
+aa={'UUU':'F','UUC':'F','UUA':'L','UUG':'L','AUU':'I','AUC':'I','AUA':'I','AUG':'M','GUU':'V','GUC':'V','GUA':'V','GUG':'V','UCU':'S','UCC':'S','UCA':'S','UCG':'S','CUU':'P','CUC':'L','CUA':'L','CUG':'L','CCU':'P','CCC':'P','CCA':'P',
+'CCG':'P','ACU':'T','ACC':'T','ACA':'T','ACG':'T','GCU':'A','GCC':'A','GCA':'A','GCG':'A','UAU':'Y','UAC':'Y','UAA':'STOP','UAG':'STOP','CAU':'H','CAC':'H','CAA':'Q','CAG':'Q','AAU':'N','AAC':'N','AAA':'K','AAG':'K','GAU':'D','GAC':'D','GAA':'E','GAG':'E',
+'UGU':'C','UGC':'C','UGA':'STOP','UGG':'W','CGU':'R','CGC':'R','CGA':'R','CGG':'R','AGU':'S','AGC':'S','AGA':'R','AGG':'R','GGU':'G','GGC':'G','GGA':'G','GGG':'G'}
+
+
+
+def aa_alignment_string(ac):
+    
+    # create the animo acid string
+
+    total_no_codons=len(exon_DNA_string(ac))//3
+    rna = transcribe(exon_DNA_string(ac))
+    rna_codon = [rna[i:i+3] for i in range(0,len(rna), 3)]
+    aa_string=[]
+
+    for i in rna_codon:
+        aa_string.append(aa[i])
+
+    # align the animo acid string to the CDS string
+
+    protein_mapping=[]
+    x=0
+    aa_count=0
+    exon_binary=exon_string(ac)
+    for i in range(0,len(exon_binary),1): 
+        if exon_binary[i]=='*'and x==0:
+            protein_mapping.append(aa_string[aa_count])
+            x+=1
+        if exon_binary[i]=='*'and x==1:
+            protein_mapping.append('.')
+            x+=1
+        if exon_binary[i]=='*'and x==2:
+            protein_mapping.append('.')
+            x=0
+            aa_count=+1
+        else:
+            protein_mapping.append('-')
+
+    return(protein_mapping)               
+
+
 
 
 
