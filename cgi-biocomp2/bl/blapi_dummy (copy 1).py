@@ -53,14 +53,14 @@ This function calls the database API which connects directly to the MariaDB whic
 
 #---------------------------------
 
-# ENTITIY SPECIFIC ATTRIBUTE EXTRACTION FUNCTIONS
+# ENTITIY SPECIFIC FUNCTIONS
 
 def getAnEntry(ac):
 
     """
-    GET AN ENTRY
+    GET AN ENTRIES
 
-This function returns a dictionary of attributes for a specific Genbank entry, specified by the Accession Number. 
+This function calls the database API which connects directly to the MariaDB which contains all the raw data extracted from genbank. The function returns the data in the form of a list of dictionaries, each dictionary returning each attribute required for each genbank entry. 
 
     """
 
@@ -68,87 +68,56 @@ This function returns a dictionary of attributes for a specific Genbank entry, s
         if d['acc']==ac:
             return(d)
 
+# Identifier  (eg. BAA22866)
 
 def gene_id(ac):
-
-    """
-    GET GENE ID
-
-This function returns the gene id from the dictionary of attributes for a specific Genbank entry, specified by the Accession Number. 
-
-    """
     gene_id=getAnEntry(ac)['gene_id']
     return(gene_id)
 
+# Protein Product Name  (eg. glycosylphosphatidylinositol)
 
 def ppn(ac):
-
-    """
-    GET PROTEIN PRODUCT NAME
-
-This function returns the protein product name from the dictionary of attributes for a specific Genbank entry, specified by the Accession Number. 
-
-    """
     ppn=getAnEntry(ac)['ppn']
     return(ppn)
 
 
+# Chromosomal Accession  (eg. 8q24.3)
 
 def chrom_loc(ac):
-
-    """
-    GET CHROMOSOMAL LOCATION (eg. 8q24.3)
-
-This function returns the chromosomal location code from the dictionary of attributes for a specific Genbank entry, specified by the Accession Number. 
-
-    """
     chrom_loc=getAnEntry(ac)['chrom_loc']
     return(chrom_loc)
 
+# CDS Amino Acid Seq
 
 def CDS_aa_string(ac):
-
-    """
-    GET CDS AMINO ACID CODE
-
-This function returns the amino acid string from the dictionary of attributes for a specific Genbank entry, specified by the Accession Number. 
-
-    """
     CDS_aa_string=getAnEntry(ac)['CDS_aa_string']
     return(CDS_aa_string)
 
+# joins
 
 def joins(ac):
-
-    """
-    GET EXON LOCATIONS
-
-This function returns the exon locations from the from the dictionary of attributes for a specific Genbank entry, specified by the Accession Number. 
-
-    """
     joins=getAnEntry(ac)['joins']
     return(joins)
 
+# complement
 
 def complement(ac):
-
-    """
-    GET COMPLEMENT STATUS
-
-This function returns the complement status from the from the dictionary of attributes for a specific Genbank entry, specified by the Accession Number. (Indicating if the DNA string listed in the genbank entry is the complimentary strand, a value of 1 means the entry is complementary)
-
-    """
     copmlement=getAnEntry(ac)['complement']
     return(complement)
 
+# Translate 
+
+def translate(DNA):
+  n_trans_dict = {'G': 'C', 'C': 'G', 'A': 'T', 'T': 'A'}
+  transtable = DNA.maketrans(n_trans_dict)
+  rna = DNA.translate(transtable)
+  return(rna)
+
+# CDS Coding Region 
+
 def CDS_DNA_string(ac):
 
-    """
-    GET CDS DNA STRING (ORIGIN)
-
-This function returns the CDS origin DNA string from the dictionary of attributes for a specific Genbank entry, specified by the Accession Number. (If the complementary attribute is set to 1, the DNA string is translated to reflect the forward strand)
-
-    """
+# Returns the full origin CDS sequence from the genbank file, translating the string if it is flagged as being a complementary strand
 
     if complement(ac) == '1':
         CDS_DNA_string=translate(getAnEntry(ac)['CDS_DNA_string'])
@@ -157,32 +126,9 @@ This function returns the CDS origin DNA string from the dictionary of attribute
 
     return(CDS_DNA_string)
 
-#---------------------------------
-
-# ENTITIY SPECIFIC ATTRIBUTE TRANSFORMATION FUNCTIONS
-
-
-
-def translate(DNA):
-
-#DNA TRANSLATION
-
-#This function translates DNA in the form of a string from one strand to the other, mostly useful for the complementary strand transformation and not likley to be called by the front end.
-
-  n_trans_dict = {'G': 'C', 'C': 'G', 'A': 'T', 'T': 'A'}
-  transtable = DNA.maketrans(n_trans_dict)
-  rna = DNA.translate(transtable)
-  return(rna)
-
-
+# Create a  list of tuples with all exon locations (Input: Accession Number)
 
 def exon_tuples(ac):
-
-#EXON LOCATION 
-
-#This function transforms the join attribute into a list of tuples, mostly useful for identifying the location of the coding regions (exons) and not likley to be called by the front end.
-
-
     join_string=joins(ac)
     start_r='\'([0-9]+)\.\.'
     end_r='\.\.([0-9]+)\''
@@ -201,12 +147,9 @@ def exon_tuples(ac):
     exon_tuples.sort
     return(exon_tuples)
 
-
-
-def exon_string(ac):
-
 # Create a string, with CDS origin length, noting the exon locations (Input: Accession Number)
 
+def exon_string(ac):
     exons_joined=exon_tuples(ac)
     exon_string=[]
     for n in CDS_DNA_string(ac):
@@ -219,11 +162,9 @@ def exon_string(ac):
 
     return(exon_string)
 
-
+# Leverages the exon location information to create the CDS DNA string
 
 def exon_DNA_string(ac):
-
-# Leverages the exon location information to create the CDS DNA string
     exon_DNA_string=[]
     exons= exon_tuples(ac)
     x=0
@@ -246,11 +187,9 @@ def transcribe(DNA):
   return(rna)
 
 
-
+# Count codon useage across the CDS DNA String
 
 def codons():
-
-# List all amino acid coding codons
     codons=['UUU','UUC','UUA','UUG','AUU','AUC','AUA','AUG','GUU','GUC','GUA','GUG','UCU','UCC','UCA','UCG','CUU','CUC','CUA','CUG','CCU','CCC','CCA',
 'CCG','ACU','ACC','ACA','ACG','GCU','GCC','GCA','GCG','UAU','UAC','UAA','UAG','CAU','CAC','CAA','CAG','AAU','AAC','AAA','AAG','GAU','GAC','GAA','GAG',
 'UGU','UGC','UGA','UGG','CGU','CGC','CGA','CGG','AGU','AGC','AGA','AGG','GGU','GGC','GGA','GGG'
@@ -258,8 +197,6 @@ def codons():
     return(codons)
 
 def chromosome_codons():
-
-# Count codon useage across the CDS DNA String
 
     total_codon_presence={'UUU':0,'UUC':0,'UUA':0,'UUG':0,'AUU':0,'AUC':0,'AUA':0,'AUG':0,'GUU':0,'GUC':0,'GUA':0,'GUG':0,'UCU':0,'UCC':0,'UCA':0,'UCG':0,'CUU':0,'CUC':0,'CUA':0,'CUG':0,'CCU':0,'CCC':0,'CCA':0,
     'CCG':0,'ACU':0,'ACC':0,'ACA':0,'ACG':0,'GCU':0,'GCC':0,'GCA':0,'GCG':0,'UAU':0,'UAC':0,'UAA':0,'UAG':0,'CAU':0,'CAC':0,'CAA':0,'CAG':0,'AAU':0,'AAC':0,'AAA':0,'AAG':0,'GAU':0,'GAC':0,'GAA':0,'GAG':0,
@@ -280,9 +217,6 @@ def chromosome_codons():
     return(total_codon_presence)
 
 def codon_count(ac):
-
-# Return codon useage across the entry and compare to the value for the entire chromosome
-
     counts=[]
     total_no_codons=len(exon_DNA_string(ac))//3
     rna = transcribe(exon_DNA_string(ac))
