@@ -24,12 +24,11 @@ ppn = str(form.getvalue('ppn'))
 
 entries = blapi_dummy.getAllEntries()
 html    = htmlutils.header()
-
-html += "  <table>\n"
-html += "<tr><th style='background-color: yellow'>Accession Number</th>"
-html += "<th style='background-color: green'>Gene ID</th>"
-html += "<th style='background-color: red'>Protien Product Name</th>"
-html += "<th style='background-color: blue'>Chromosomal Location</th></tr>\n"
+html += '  <table border="5">\n'
+html += "<tr><th style='background-color: gold'>Accession Number</th>"
+html += "<th style='background-color: darkseagreen'>Gene ID</th>"
+html += "<th style='background-color: salmon'>Protein Product Name</th>"
+html += "<th style='background-color: skyblue'>Chromosomal Location</th></tr>\n"
 
 if 'ac' not in form and 'gi' not in form and 'ppn' not in form:
         for d in entries:

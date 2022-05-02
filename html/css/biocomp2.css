@@ -1,5 +1,11 @@
-body {background: #ffffff;
-      font: 12pt Helvetica,Arial,sans-serif;
+h1 {background: #654321;
+    color: white;
+    
+}
+
+
+body {background: #98ff98;
+      font-family:"Andale Mono", monospace;
       color: #333333;
       border: none;
       margin: 0pt;
@@ -7,4 +13,11 @@ body {background: #ffffff;
      }
 
 .content {padding: 1em;}
+
+.center{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
 

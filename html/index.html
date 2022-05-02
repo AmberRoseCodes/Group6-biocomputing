@@ -4,53 +4,48 @@
 -->
 
 <html>
+
   <head>
+    <img align="middle" src="https://chromodisorder.org/wp-content/uploads/2017/11/chromosome-1.png" class="center"/> 
     <title>Biocomputing II - framework</title>
     <link rel='stylesheet' type='text/css' href='css/biocomp2.css' />
   </head>
   
   <body>
     <div class='content'>
-      <h1>Biocomputing II - framework</h1>
-      <p>A simple demo of how the Biocomputing II project should work and
-        be submitted. It shows how the API between the layers is organized.</p>
+      <h1><center>Biocomputing II - Group 6 Database</center></h1>
+      <p>An online database containing information for various genes found 
+	in Human Chromosome 1.</p>
       
-      <p>Most importantly, it shows how you how you are <b>strongly
-        recommended</b> to organize your code in GitHub for
-        marking. If you deviate from this, you must have a very good
-        reason!
+      <p>This database allows you to search for specific genes based on multiple
+	parameters including: Accession Number, Chromosomal Location and Protein 	products among others.The results page will return a table of information 	regarding the gene you have searched for. For example, if you search 'RHD' 	in 'Gene ID' the results will show you information only for genes with that 	Gene ID, as well as their accession numbers, protein products etc.
       </p>
 
-      <p><b>Note</b> that the Genbank accession search is guaranteed to
-         return zero or one entries; the other searches may return zero
-         to many entries. Consequently the search by Genbank accession
-         can take you to the detail page for that entry while the other
-         searches should take you to a list of hits (just as you have
-         when you list all entries).
+      <p><b>Note</b> A table will also be returned for each specific entry, 		highlighting respective codon usage in said entry, as well as across the 	entire database. Upon clicking a specific entry, a more detailed breakdown 	for the search can be seen, with information such as restriction enzyme 		sites. 
       </p>
       
       <p>
-        <a href='/cgi-bin/cgiwrap/ha002/biocomp2demo/cgi/listall.cgi'>List all entries</a>
+        <a href='/cgi-bin/cgiwrap/kf002/biocomp2demo/cgi/listall.cgi'>List all entries</a>
       </p>
       
-      <form action='/cgi-bin/cgiwrap/ha002/biocomp2demo/cgi/listall.cgi' method='get'>
-        <p>Search by:</p>
+      <form action='/cgi-bin/cgiwrap/kf002/biocomp2demo/cgi/listall.cgi' method='get'>
+        <p class="center"><b>Search by:</b></p>
         
-        <table>
+        <table class="center">
           <tr>
-            <td>genbank accession</td>
-            <td><input type='text' name='ac'/> (only this search box works in the demo)</td>
+            <td>Genbank Accession</td>
+            <td><input type='text' name='ac'/></td>
           </tr>
           <tr>
-            <td>gene identifier</td>
+            <td>Gene Identifier</td>
             <td><input type='text' name='gi'/></td>
           </tr>
           <tr>
-            <td>protein product</td>
+            <td>Protein Product</td>
             <td><input type='text' name='ppn'/></td>
           </tr>
           <tr>
-            <td>chromosomal location</td>
+            <td>Chromosomal Location</td>
             <td><input type='text' name='loc'/></td>
           </tr>
         </table>

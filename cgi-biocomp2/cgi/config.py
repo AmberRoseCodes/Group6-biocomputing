@@ -9,7 +9,7 @@ All URLs and database connection parameters should appear in here.
 # will be something like:
 #    cgiURL="/cgi-bin/cgiwrap/ab123"
 # (where `ab123` is replaced by your username).
-cgiURL="/cgi-bin/cgiwrap/ha002"
+cgiURL="/cgi-bin/cgiwrap/kf002"
 
 
 

@@ -27,17 +27,17 @@ exons = blapi_dummy.exon_string(accession)
 
 html = htmlutils.header()
 html += "<h1>Detailed Genbank Results</h1>\n"
-html += "  <table>\n"
+html += '  <table border="5">\n'
 
-html += "<tr><td>Result of search for Accession Number :  </td>" + "<td>" + accession + "</td></tr>"
+html += "<tr><th style='background-color: gold' td>Result of search for Accession Number :  </td>" + "<td>" + accession + "</td></tr>" 
 
-html += "<tr><td>Protien Product Name: </td>" + "<td>" + blapi_dummy.ppn(accession) + "</td></tr>"  
+html += "<tr><th style='background-color: salmon' td>Protein Product Name: </td>" + "<td>" + blapi_dummy.ppn(accession) + "</td></tr>"  
 
-html += "<tr><td>Gene ID: </td>" + "<td>"  + blapi_dummy.gene_id(accession) + "</td></tr>"
+html += "<tr><th style='background-color: darkseagreen' td>Gene ID: </td>" + "<td>"  + blapi_dummy.gene_id(accession) + "</td></tr>"
 
-html += "<tr><td>Chromosomal Location: </td>" + "<td>"  + blapi_dummy.chrom_loc(accession) + "</td></tr>"
+html += "<tr><th style='background-color: skyblue' td>Chromosomal Location: </td>" + "<td>"  + blapi_dummy.chrom_loc(accession) + "</td></tr>"
 
-html += "<tr><td>CDS AA String: </td>" + "<td>"  + blapi_dummy.CDS_aa_string(accession) + "</td></tr>"
+html += "<tr><th style='background-color: cadetblue' td>CDS AA String: </td>" + "<td>"  + blapi_dummy.CDS_aa_string(accession) + "</td></tr>"
 
 html += "  </table>\n"
 
@@ -66,9 +66,10 @@ html += "  </table>\n"
 
 html += "<h3>Codon Frequency in CDS DNA String</h3>\n"
 
-html += '  <table border="2">\n'
+html += '  <table border="5">\n'
 
 html += '<tr>'
+
 x = 0
 for codon in codon_count_table:
     if x % 10 == 0:
@@ -79,6 +80,10 @@ for codon in codon_count_table:
 html += "</tr>"
 html += "  </table>\n"
 
+html += "Key: <br>"
+html += "Count of Codons in genbank entry (1st Number) <br>"
+html += "% of codon found in entry (1st percentage) <br>"
+html += "% of codon found across all chromosome coding regions in database (2nd percentage) <br>"
 
 html += htmlutils.footer()
 
