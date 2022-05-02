@@ -47,12 +47,7 @@ def getAllEntries():
 
 
 
-def codons():
-    codons=['uuu','uuc','uua','uug','auu','auc','aua','aug','guu','guc','gua','gug','ucu','ucc','uca','ucg','cuu','cuc','cua','cug','ccu','ccc','cca',
-'ccg','acu','acc','aca','acg','gcu','gcc','gca','gcg','uau','uac','uaa','uag','cau','cac','caa','cag','aau','aac','aaa','aag','gau','gac','gaa','gag',
-'ugu','ugc','uga','ugg','cgu','cgc','cga','cgg','agu','agc','aga','agg','ggu','ggc','gga','ggg'
-]
-    return(codons)
+
 
 
 
