@@ -1,13 +1,25 @@
-Birkbeck Biocomputing II Skeleton Code
+Birkbeck Biocomputing II - Group 6
 ======================================
 
-This provides some skeleton code for demonstrating how the three-layer
-model works for the Biocomputing II project.
+This folder contains all the files necessary to run the genome browser built by Group 6 for Chromosome 1. 
 
-Most importantly, **it provides the required way in which files are
-expected to be laid out in the GitHib submission**.
+By copying this repository locally, updating the config.py file with your home directory, and running the install.sh script it is possible to run the web application from any server.  The instructions to do this (as provided by Andrew Martin) have been left in this ReadMe for future reference. 
 
-A good place to start would be to try this out. 
+This web application is made up of 3 (+ and additional front end) each led by an individual on the team, all code documentation and reflective essays are stored in the following folders: 
+
+### Data Layer
+Denzel Eggerue: createdb/docs
+
+### Business Logic Layer
+Amber Hilton: cgi-biocomp2/bl/docs
+
+### Front End Layer
+Hirushi Rajapakse: cgi-biocomp2/cgi/docs
+Farah Khan: cgi-biocomp2/cgi/docs 
+
+
+
+## Setting up 
 
 1. Create a file called `config.sh` using one of the `config_xxxx.sh`
 files as a template. At Birkbeck, you should just need to do `cp
@@ -28,18 +40,10 @@ location in which you stored the HTML.
 
 -----------------------------------------------------------------------
 
-How to use this skeleton
+How to get started with GitHub
 ------------------------
 
-1. *One member of your team* must create a **private** repository
-on your GitHub account.
-
-2. Allow the other members of the team read/write access to the repository:
-
-- Click `Settings` (at the top)
-- Click `Manage access` (on the left)
-- Click `Invite a collaborator`
-- Add each of the members of your team
+1. reate a **private** repository on your GitHub account.
 
 We will assume your GitHub username is `JohnSmith` and your repository
 is called `BBKProject`. Take the following steps:
@@ -48,12 +52,12 @@ is called `BBKProject`. Take the following steps:
 git clone git@github.com:AndrewCRMartin/biocomp2.git
 cd biocomp2
 git remote rm origin
-git remote add origin git@github.com:JohnSmith/BBKProject.git
+git remote add origin git@github.com:AmberRoseCodes/Group6-biocomputing.git
 git push -u origin master
 ```
 
-You have now created your own repository which is a copy of this
-skeleton project and synchronized it with your own GitHub.
+You have now created your own repository which is a copy of our project and 
+synchronized it with your own GitHub.
 
 You can now all clone the repository to your own machines or unix
 accounts and edit the code. Don't forget to commit and push your
