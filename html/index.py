@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-...Comment header goes here...
+Python script which generates landing page for the database.
 
 Simple script to generate the index.html file so that we can pick up
 configuration information from the config file.
@@ -14,7 +14,7 @@ import config
 print(
 """<!DOCTYPE html>
 
-<!-- A header comment goes here
+<!-- This is the index.html script, Author: Farah Khan, Version: 1, Date: 02/05/2022
 -->
 
 <html>
