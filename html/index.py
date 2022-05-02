@@ -2,6 +2,12 @@
 """
 ...Comment header goes here...
 
+# Index.py created by Hirushi Rajapakse for making the front end
+# V1
+
+#biocomp2.css created by Hirushi Rajapakse to point the stylesheet
+#V1
+
 Simple script to generate the index.html file so that we can pick up
 configuration information from the config file.
 """
@@ -18,31 +24,19 @@ print(
 -->
 
 <html>
+
   <head>
-    <title>Biocomputing II - framework</title>
-    <link rel='stylesheet' type='text/css' href='css/biocomp2.css' />
+   <img src='https://www.thoughtco.com/thmb/CxJQOpWm1-rSrktSijLtIVEjGXg=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/chromosomes-567300453df78ccc15fd3c19.jpg' width="150" height="150"> 
+    <link rel='stylesheet' type='text/css' href='css/biocomp2.css'/>
   </head>
   
   <body>
     <div class='content'>
-      <h1>Biocomputing II - framework</h1>
-      <p>A simple demo of how the Biocomputing II project should work and
-        be submitted. It shows how the API between the layers is organized.</p>
-      
-      <p>Most importantly, it shows how you how you are <b>strongly
-        recommended</b> to organize your code in GitHub for
-        marking. If you deviate from this, you must have a very good
-        reason!
+      <h1>Biocomputing II Group 6 Chromosome 1 <centre> </h1>
+      <p> The GenBank database allows access to scientific community to retrieve most up-to-date and comprehensive DNA sequence information. This geneome brower will display genbank files associated with chromosome 1.</p> 
+
       </p>
 
-      <p><b>Note</b> that the Genbank accession search is guaranteed to
-         return zero or one entries; the other searches may return zero
-         to many entries. Consequently the search by Genbank accession
-         can take you to the detail page for that entry while the other
-         searches should take you to a list of hits (just as you have
-         when you list all entries).
-      </p>
-      
       <p>
         <a href='""" + config.listallurl + """'>List all entries</a>
       </p>
@@ -50,10 +44,12 @@ print(
       <form action='""" + config.listallurl + """' method='get'>
         <p>Search by:</p>
         
+      <div class='table'>
         <table>
+        <table border='4'>\n'
           <tr>
             <td>genbank accession</td>
-            <td><input type='text' name='ac'/> (only this search box works in the demo)</td>
+            <td><input type='text' name='ac'/></td>
           </tr>
           <tr>
             <td>gene identifier</td>

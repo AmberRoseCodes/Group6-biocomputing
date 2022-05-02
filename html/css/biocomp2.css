@@ -1,10 +1,14 @@
-body {background: #ffffff;
-      font: 12pt Helvetica,Arial,sans-serif;
+body {background: #dda0dd; 
+      font: bold 18pt Helvetica, Arial, sans-serif;
+      text-align: left;
       color: #333333;
-      border: none;
-      margin: 0pt;
       padding: 0pt;
+      margin:0pt
      }
 
-.content {padding: 1em;}
+.content {padding: 0.25em;
+        
+       }
+
+
 
