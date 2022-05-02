@@ -1,4 +1,4 @@
-Birkbeck Biocomputing II - Group 6
+Birkbeck Biocomputing II - Group 6.
 ======================================
 
 This folder contains all the files necessary to run the genome browser built by Group 6 for Chromosome 1. 
