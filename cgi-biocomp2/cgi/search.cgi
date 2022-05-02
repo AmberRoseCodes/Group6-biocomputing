@@ -22,7 +22,7 @@ accession = str(form.getvalue('ac'))
 codon_count_table = blapi_dummy.codon_count(accession)
 dna_string = blapi_dummy.CDS_DNA_string(accession)
 se_string = blapi_dummy.sticky_ends_inplace(accession)
-exons = blapi_dummy.find_exons(accession)
+exons = blapi_dummy.exon_string(accession)
 
 
 html = htmlutils.header()

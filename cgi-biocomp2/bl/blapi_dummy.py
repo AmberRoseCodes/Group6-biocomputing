@@ -144,7 +144,7 @@ def cleaned_joins(ac):
     exons_joined.sort
     return(exons_joined)
 
-def find_exons(ac):
+def exon_string(ac):
     exons_joined=cleaned_joins(ac)
     m=[]
     for n in CDS_DNA_string(ac):
