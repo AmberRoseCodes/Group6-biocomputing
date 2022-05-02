@@ -4,9 +4,6 @@
 
 This is the business logic API
 
-TL;DR this file provides the API Doucmentation, giving the user the necessary 
-information to use and understand the functions contained within the API
-
 Author: Amber Hilton
 
 Current version: V10
@@ -168,14 +165,9 @@ This function returns the CDS origin DNA string from the dictionary of attribute
 
 def translate(DNA):
 
-    """
-    TRANSLATE
+#DNA TRANSLATION
 
-This function translates a DNA file into its reverse complimentary strand. This is intended to be used on the genbank entires 
-which record the complementary DNA strand rather than the forward strand
-    """
-
-#This function translates DNA in the form of a string from one strand to the other, 
+#This function translates DNA in the form of a string from one strand to the other, mostly useful for the complementary strand transformation and not likley to be called by the front end.
 
   n_trans_dict = {'G': 'C', 'C': 'G', 'A': 'T', 'T': 'A'}
   transtable = DNA.maketrans(n_trans_dict)
@@ -186,14 +178,9 @@ which record the complementary DNA strand rather than the forward strand
 
 def exon_tuples(ac):
 
-    """
-    EXON LOCATIONS, START / END
+#EXON LOCATION 
 
-This function transforms the join attribute into a list of tuples, mostly useful for identifying the 
-start and end location of the coding regions (exons) and not likley to be called by the front end.
-
-
-    """
+#This function transforms the join attribute into a list of tuples, mostly useful for identifying the location of the coding regions (exons) and not likley to be called by the front end.
 
 
     join_string=joins(ac)
@@ -217,12 +204,8 @@ start and end location of the coding regions (exons) and not likley to be called
 
 
 def exon_string(ac):
-    """
-    EXON LOCATIONS IN A STRING
 
-Create a string, with CDS origin length, noting the exon locations with a *
-
-    """ 
+# Create a string, with CDS origin length, noting the exon locations (Input: Accession Number)
 
     exons_joined=exon_tuples(ac)
     exon_string=[]
@@ -240,13 +223,7 @@ Create a string, with CDS origin length, noting the exon locations with a *
 
 def exon_DNA_string(ac):
 
-    """
-    EXON DNA STRING CONCATENATED
-
-Leverages the exon location information to create the CDS DNA string
-
-    """ 
-
+# Leverages the exon location information to create the CDS DNA string
     exon_DNA_string=[]
     exons= exon_tuples(ac)
     x=0
@@ -259,12 +236,10 @@ Leverages the exon location information to create the CDS DNA string
 
 
 
+# Transcribe forward strand DNA to RNA (non-specific function)
 
 
 def transcribe(DNA):
-
-# Transscribe a DNA string into RNA by replacing T with U 
-    
   n_trans_dict = {'T': 'U'}
   transtable = DNA.maketrans(n_trans_dict)
   rna = DNA.translate(transtable)
@@ -276,7 +251,6 @@ def transcribe(DNA):
 def codons():
 
 # List all amino acid coding codons
-
     codons=['UUU','UUC','UUA','UUG','AUU','AUC','AUA','AUG','GUU','GUC','GUA','GUG','UCU','UCC','UCA','UCG','CUU','CUC','CUA','CUG','CCU','CCC','CCA',
 'CCG','ACU','ACC','ACA','ACG','GCU','GCC','GCA','GCG','UAU','UAC','UAA','UAG','CAU','CAC','CAA','CAG','AAU','AAC','AAA','AAG','GAU','GAC','GAA','GAG',
 'UGU','UGC','UGA','UGG','CGU','CGC','CGA','CGG','AGU','AGC','AGA','AGG','GGU','GGC','GGA','GGG'
@@ -325,32 +299,26 @@ def codon_count(ac):
 
 def sticky_ends():
     
-
+# -------------------------------------------------------
 # Dictionary contains the regognition site for each enzyme, and the index at which it leaves a sticky end on the  # enzyme, in each case the recognition site is noted from the 5 prime end
-
+# -------------------------------------------------------
 
     sticky_ends={'EcoRI':['GAATTC',0], 'BamHI':['GGATCC',0], 'BsuMI':['ACCTGC',9]}
 
     return(sticky_ends)
 
- 
+ # Create a list with locations of the sticky ends (Inputs: Restriction Enzyme & Accession Number)
 
 def sticky_ends_loc(ac,enzyme):
-
-# Create a list with locations of the sticky ends (Inputs: Restriction Enzyme & Accession Number)
-
     matches=[]
     recognition_site=sticky_ends()[enzyme][0]
     for m in re.finditer(recognition_site, CDS_DNA_string(ac)):
         matches.append(m.start()+sticky_ends()[enzyme][1])
     return(matches)  
 
-
+ # Create a string, with CDS origin length, noting the restriction enzyme locations (Input: Accession Number)
 
 def sticky_ends_inplace(ac): 
-
-# Create a string, with CDS origin length, noting the restriction enzyme locations (Input: Accession Number)
-
     l=[]
     for n in CDS_DNA_string(ac):
         l.append('-')
@@ -374,10 +342,8 @@ aa={'UUU':'F','UUC':'F','UUA':'L','UUG':'L','AUU':'I','AUC':'I','AUA':'I','AUG':
 
 
 def aa_alignment_string(ac):
-
-# create a string the length of the full CDS origin and align the amino acids to the Coding regions
     
-    # create the animo acid string for the exons
+    # create the animo acid string
 
     total_no_codons=len(exon_DNA_string(ac))//3
     rna = transcribe(exon_DNA_string(ac))
