@@ -49,7 +49,7 @@ We will assume your GitHub username is `JohnSmith` and your repository
 is called `BBKProject`. Take the following steps:
 
 ```
-git clone git@github.com:AndrewCRMartin/biocomp2.git
+git clone git@github.com:AmberRoseCodes/Group6-biocomputing.git
 cd biocomp2
 git remote rm origin
 git remote add origin git@github.com:AmberRoseCodes/Group6-biocomputing.git
