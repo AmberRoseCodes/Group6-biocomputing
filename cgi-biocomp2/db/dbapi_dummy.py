@@ -36,8 +36,9 @@ def getAllEntries():
         d['gene_id']=row[2]
         d['chrom_loc']=row[3]
         d['CDS_aa_string']=row[4]
-        d['CDS_DNA_string']=row[5]
-        d['joins']=row[6]
+        d['complement']=row[5]
+        d['CDS_DNA_string']=row[6]
+        d['joins']=row[7]
         
         l.append(d)
     
@@ -47,20 +48,8 @@ def getAllEntries():
 
 
 
-def codons():
-    codons=['uuu','uuc','uua','uug','auu','auc','aua','aug','guu','guc','gua','gug','ucu','ucc','uca','ucg','cuu','cuc','cua','cug','ccu','ccc','cca',
-'ccg','acu','acc','aca','acg','gcu','gcc','gca','gcg','uau','uac','uaa','uag','cau','cac','caa','cag','aau','aac','aaa','aag','gau','gac','gaa','gag',
-'ugu','ugc','uga','ugg','cgu','cgc','cga','cgg','agu','agc','aga','agg','ggu','ggc','gga','ggg'
-]
-    return(codons)
 
-def sticky_ends():
-    
-# Dictionary contains the regognition site for each enzyme, and the index at which it leaves a sticky end on the enzyme, in each case the recognition site is noted from the 5 prime end
 
-    sticky_ends={'EcoRI':['gaattc',0], 'BamHI':['ggatcc',0], 'BsuMI':['acctgc',9]}
-
-    return(sticky_ends)
 
 
 
