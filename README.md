@@ -4,6 +4,8 @@ Birkbeck Biocomputing II - Group 6.
 Our genome browser can be found at: 
 https://student.cryst.bbk.ac.uk/~ph001/biocomp2demo/
 
+Note: The Genome browser only displays the first 100 records from the DB due to performance constraints, this limit can be extended in the DB API as required. 
+
 This folder contains all the files necessary to download and run this genome browser built by Group 6 for Chromosome 1. 
 
 By copying this repository locally, updating the config.py file with your home directory, and running the install.sh script it is possible to run the web application from any server.  The instructions to do this (as provided by Andrew Martin) have been left in this ReadMe for future reference. 
