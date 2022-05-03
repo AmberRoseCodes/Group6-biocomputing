@@ -12,7 +12,7 @@ import sys
 sys.path.insert(0, "../bl/")
 sys.path.insert(0, "../")
 
-import blapi_dummy      # Import the Business Logic API
+import blapi      # Import the Business Logic API
 import htmlutils  # Import HTML utilities
 import config     # Import configuration information (e.g. URLs)
 import cgi
@@ -23,7 +23,7 @@ gi = str(form.getvalue('gi'))
 ppn = str(form.getvalue('ppn'))
 loc = str(form.getvalue('loc'))
 
-entries = blapi_dummy.getAllEntries()
+entries = blapi.getAllEntries()
 html    = htmlutils.header()
 
 html += "  <table>\n"
