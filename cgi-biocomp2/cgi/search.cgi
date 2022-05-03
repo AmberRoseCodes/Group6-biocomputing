@@ -13,17 +13,17 @@ sys.path.insert(0, "../bl/")
 sys.path.insert(0, "../")
 
 import cgi        # Import the CGI module
-import blapi_dummy      # Import the Business Logic API
+import blapi      # Import the Business Logic API
 import htmlutils  # Import HTML utilities
 import config     # Import configuration information (e.g. URLs)
 
 form = cgi.FieldStorage()
 accession = str(form.getvalue('ac'))
-codon_count_table = blapi_dummy.codon_count(accession)
-dna_string = blapi_dummy.CDS_DNA_string(accession)
-se_string = blapi_dummy.sticky_ends_inplace(accession)
-exons = blapi_dummy.exon_string(accession)
-amino_acid = blapi_dummy.aa_alignment_string(accession)
+codon_count_table = blapi.codon_count(accession)
+dna_string = blapi.CDS_DNA_string(accession)
+se_string = blapi.sticky_ends_inplace(accession)
+exons = blapi.exon_string(accession)
+amino_acid = blapi.aa_alignment_string(accession)
 
 
 html = htmlutils.header()
@@ -35,13 +35,13 @@ html += '  <table border="4">\n'
 
 html += "<tr><th style='background-color: yellow' <td>Result of search for Accession Number :  </td>" + "<td>" + accession + "</td></tr>"
 
-html += "<tr><th style='background-color: lightgreen' <td>Protien Product Name: </td>" + "<td>" + blapi_dummy.ppn(accession) + "</td></tr>"  
+html += "<tr><th style='background-color: lightgreen' <td>Protien Product Name: </td>" + "<td>" + blapi.ppn(accession) + "</td></tr>"  
 
-html += "<tr><th style='background-color: lightblue' <td>Gene ID: </td>" + "<td>"  + blapi_dummy.gene_id(accession) + "</td></tr>"
+html += "<tr><th style='background-color: lightblue' <td>Gene ID: </td>" + "<td>"  + blapi.gene_id(accession) + "</td></tr>"
 
-html += "<tr><th style='background-color: lightpink' <td>Chromosomal Location: </td>" + "<td>"  + blapi_dummy.chrom_loc(accession) + "</td></tr>"
+html += "<tr><th style='background-color: lightpink' <td>Chromosomal Location: </td>" + "<td>"  + blapi.chrom_loc(accession) + "</td></tr>"
 
-html += "<tr><th style='background-color: lightgrey'<td>CDS AA String: </td>" + "<td>"  + blapi_dummy.CDS_aa_string(accession) + "</td></tr>"
+html += "<tr><th style='background-color: lightgrey'<td>CDS AA String: </td>" + "<td>"  + blapi.CDS_aa_string(accession) + "</td></tr>"
 
 html += "  </table>\n"
 

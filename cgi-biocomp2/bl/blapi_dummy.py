@@ -32,7 +32,7 @@ import sys
 sys.path.insert(0, "../db/")
 sys.path.insert(0, "../")
 
-import dbapi_dummy   # Import the database api
+import dbapi   # Import the database api
 import re # Import Regex library
 
 
@@ -47,7 +47,7 @@ def getAllEntries():
 This function calls the database API which connects directly to the MariaDB which contains all the raw data extracted from genbank. The function returns the data in the form of a list of dictionaries, each dictionary returning each attribute required for each genbank entry. 
 
     """
-    all_entries=dbapi_dummy.getAllEntries()
+    all_entries=dbapi.getAllEntries()
     return(all_entries)
 
 
@@ -363,17 +363,21 @@ def aa_alignment_string(ac):
     x=0
     aa_count=0
     exon_binary=exon_string(ac)
-    for i in range(0,len(exon_binary),1): 
-        if exon_binary[i]=='*'and x==0:
-            protein_mapping.append(aa_string[aa_count])
-            x+=1
+    for i in range(0,len(exon_binary),1):
+        try:
+            if exon_binary[i]=='*'and x==0:
+               protein_mapping.append(aa_string[aa_count])
+               x+=1
+               aa_count+=1       
+        except:
+            pass
         if exon_binary[i]=='*'and x==1:
             protein_mapping.append('.')
             x+=1
         if exon_binary[i]=='*'and x==2:
             protein_mapping.append('.')
             x=0
-            aa_count=+1
+        
         else:
             protein_mapping.append('-')
 
