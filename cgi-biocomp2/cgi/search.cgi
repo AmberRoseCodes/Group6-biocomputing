@@ -23,7 +23,7 @@ codon_count_table = blapi_dummy.codon_count(accession)
 dna_string = blapi_dummy.CDS_DNA_string(accession)
 se_string = blapi_dummy.sticky_ends_inplace(accession)
 exons = blapi_dummy.exon_string(accession)
-amino_acid = blapi_dummy.aa_alignment_string(accession)
+#amino_acid = blapi_dummy.aa_alignment_string(accession)
 
 
 html = htmlutils.header()
@@ -41,18 +41,17 @@ html += "<tr><th style='background-color: lightblue' <td>Gene ID: </td>" + "<td>
 
 html += "<tr><th style='background-color: lightpink' <td>Chromosomal Location: </td>" + "<td>"  + blapi_dummy.chrom_loc(accession) + "</td></tr>"
 
-html += "<tr><th style='background-color: lightgrey'<td>CDS AA String: </td>" + "<td>"  + blapi_dummy.CDS_aa_string(accession) + "</td></tr>"
+#html += "<tr><th style='background-color: lightgrey'<td>CDS AA String: </td>" + "<td>"  + blapi_dummy.CDS_aa_string(accession) + "</td></tr>"
 
 html += "  </table>\n"
-html += '  <table border="4">\n'
+
 
 #dna string details
 
 html += "<h3>CDS DNA String</h3>\n"
-
 html += '  <table>\n'
+html += '  <style="overflow-x:auto">\n'
 html += '  <table border="4">\n'
-
 html += '<tr>'
 for n in dna_string:
     html += "<td>" + n + "</td>"
@@ -66,10 +65,11 @@ for n in exons:
     html += "<td>" + n + "</td>"
 html += "</tr>"
 html += '<tr>'
-for aa in amino_acid:
-    html += "<td>" + aa + "</td>"
-html += "</tr>"
+#for aa in amino_acid:
+#    html += "<td>" + aa + "</td>"
+#html += "</tr>"
 html += "  </table>\n"
+html += '  <style="overflow-x:auto">\n'
 html += '  <table border="4">\n'
 
 

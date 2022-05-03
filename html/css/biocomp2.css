@@ -1,5 +1,5 @@
-body {background: #dda0dd; 
-      font: bold 18pt Helvetica, Arial, sans-serif;
+body {background: #FFF0F5; 
+      font: bold 14pt Helvetica, Arial, sans-serif;
       text-align: left;
       color: #333333;
       padding: 0pt;
@@ -11,4 +11,27 @@ body {background: #dda0dd;
        }
 
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: pink;
+  color: black;
+  text-align: center;
+       }
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
