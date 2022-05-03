@@ -18,6 +18,7 @@ Amber Hilton: cgi-biocomp2/bl/docs
 
 ### Front End Layer
 Hirushi Rajapakse: cgi-biocomp2/cgi/docs
+
 Farah Khan: cgi-biocomp2/cgi/docs 
 
 
