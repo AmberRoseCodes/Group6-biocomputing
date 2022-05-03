@@ -1,26 +1,15 @@
 Biocomputing II / cgi-biocomp2
 ==============================
 
-This directory contains a config file and the code for the three layers:
+Author - Hirushi Rajapakse & Amber Hilton 03.05.2022
 
-- Frontend (`cgi`)
+Please find Hirushi Rajapakse essay saved in Group6-biocomputing/cgi-biocomp2/cgi/docs/
 
-- Business Logic (`bl`)
+Please find the URL for accessing the database: https://student.cryst.bbk.ac.uk/~ph001/biocomp2demo/
 
-- Database access (`db`)
-
-There would be a `cgi2` directory if there is an alternative front end.
-
-Note that the sample code in the `cgi` directory imports the
-`blapi.py` module from the `bl` directory and the `blapi.py` module
-imports the `dbapi.py` module from the `db` directory.
+The CGI scripts for listall.cgi and search.cgi completes the process of extracting each entry from business logic layer to present as multiple detailed tables in a HTML format.
 
 
 
-The `config.py` file is a symbolic link to the configuration file you
-want to use and is created by the install script. For example, if you
-want to have configuration files for using on a home machine and a
-Birkbeck machine, you could create a config file for each and make
-`config.py` a symbolic link to the one you want (making sure `config.py`
-is not committed to your github repository).
+
 
