@@ -9,6 +9,8 @@ Please find the URL for accessing the database: https://student.cryst.bbk.ac.uk/
 
 The CGI scripts for listall.cgi and search.cgi completes the process of extracting each entry from business logic layer to present as multiple detailed tables in a HTML format.
 
+Listall.cgi comprises of code that was used to present all entries from returning the search in a table format. 
+
 Search.cgi comprises of code that was used to presnt DNA string details and Codon counts in HTML format.
 
 
