@@ -7,7 +7,7 @@ Please find Hirushi Rajapakse essay saved in Group6-biocomputing/cgi-biocomp2/cg
 
 Please find the URL for accessing the database: https://student.cryst.bbk.ac.uk/~ph001/biocomp2demo/
 
-The CGI scripts for listall.cgi and search.cgi completes the process of extracting each entry from business logic layer to present as multiple detailed tables in a HTML format.
+The CGI scripts for listall.cgi and search.cgi completes the process of extracting each entry from business logic layer to present as multiple detailed tables in a HTML format. 
 
 
 
