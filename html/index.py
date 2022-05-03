@@ -2,6 +2,14 @@
 """
 ...Comment header goes here...
 
+# Index.py created by Hirushi Rajapakse for making the front end. Addition of image.titles,description,table styles,footer.
+# V3
+
+# biocomp2.css created by Hirushi Rajapakse to point the stylesheet. Aesthetics for body, content and footer layout
+#V3
+
+# tried to add a loader but didnt succeed <div class="loader"></div>
+
 Simple script to generate the index.html file so that we can pick up
 configuration information from the config file.
 """
@@ -18,61 +26,58 @@ print(
 -->
 
 <html>
+
   <head>
-    <title>Biocomputing II - framework</title>
-    <link rel='stylesheet' type='text/css' href='css/biocomp2.css' />
+   <img align="middle" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Ideogram_human_chromosome_1.svg/600px-Ideogram_human_chromosome_1.svg.png" class="center" width="400" height="150">  
+   <title>Biocomputing II - framework</title>
+    <link rel='stylesheet' type='text/css' href='css/biocomp2.css'/>
   </head>
   
   <body>
     <div class='content'>
-      <h1>Biocomputing II - framework</h1>
-      <p>A simple demo of how the Biocomputing II project should work and
-        be submitted. It shows how the API between the layers is organized.</p>
+      <h1><center>Biocomputing II - Group 6 Database for Chromosome 1</centre></h1>
+      <center>The GenBank database allows access to scientific community to retrieve most up-to-date and comprehensive DNA sequence information. This geneome brower will display genbank files associated with chromosome 1</centre></>
+
       
-      <p>Most importantly, it shows how you how you are <b>strongly
-        recommended</b> to organize your code in GitHub for
-        marking. If you deviate from this, you must have a very good
-        reason!
       </p>
 
-      <p><b>Note</b> that the Genbank accession search is guaranteed to
-         return zero or one entries; the other searches may return zero
-         to many entries. Consequently the search by Genbank accession
-         can take you to the detail page for that entry while the other
-         searches should take you to a list of hits (just as you have
-         when you list all entries).
-      </p>
-      
-      <p>
+
         <a href='""" + config.listallurl + """'>List all entries</a>
       </p>
       
       <form action='""" + config.listallurl + """' method='get'>
-        <p>Search by:</p>
-        
-        <table>
+      <p> The table below will search and return genes based on Accession Number, Chromosomal Location and Protein products
+
+       
+        <p class="center"><b>Search by:</b></p>
+        <table border='4'>\n
           <tr>
-            <td>genbank accession</td>
-            <td><input type='text' name='ac'/> (only this search box works in the demo)</td>
+            <td>Genbank accession</td>
+            <td><input type='text' name='ac'/></td>
           </tr>
           <tr>
-            <td>gene identifier</td>
+            <td>Gene identifier</td>
             <td><input type='text' name='gi'/></td>
           </tr>
           <tr>
-            <td>protein product</td>
+            <td>Protein product</td>
             <td><input type='text' name='ppn'/></td>
           </tr>
           <tr>
-            <td>chromosomal location</td>
+            <td>Chromosomal location</td>
             <td><input type='text' name='loc'/></td>
           </tr>
         </table>
 
-        <p><input type='Submit' value='Search' /></p>
+        <p><input type='Submit' value='Search' /></p
 
       </form>
+      
     </div> <!-- content -->
   </body>
 </html>
+
+<div class="footer">
+         <p>Created by Hirushi, Amber, Denzel and Farah Birkbeck University 2022</p>
+        </div>
 """)

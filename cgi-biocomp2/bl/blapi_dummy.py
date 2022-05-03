@@ -351,7 +351,11 @@ def aa_alignment_string(ac):
     aa_string=[]
 
     for i in rna_codon:
-        aa_string.append(aa[i])
+        try:
+            aa_string.append(aa[i])
+        except:
+            aa_string.append('X')
+          
 
     # align the animo acid string to the CDS string
 
