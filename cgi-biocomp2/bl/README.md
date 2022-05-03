@@ -5,6 +5,8 @@ Biocomputing II / cgi-biocomp2/bl
 
 The function of the Business Logic Layer is to transform data from the DB layer and present it to the Front End to meet the requirements of the genome browser.
 
+Note: The final bl api file is blapi_dummy.py
+
 **Author: Amber Hilton**
 **Date: 02/05/2022**
 
@@ -19,6 +21,6 @@ The function of the Business Logic Layer is to transform data from the DB layer 
 | V7  | Created translate and transcribe functions and function to stich exon DNA regions together |
 | V8  | Updated functions to point at Exon DNA region rather than Full origin sequence where required |
 | V9  | Updated codon count Functions to include full chromosome % and entity specific %  |
-| V10 | Updated API file with documentation [ Current working Version ] |
+| V10 | Updated API file with documentation [ Current working Version blapi_dummy] |
 
 
