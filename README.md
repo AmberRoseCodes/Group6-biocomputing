@@ -1,4 +1,4 @@
-Birkbeck Biocomputing II - Group 6.
+Birkbeck Biocomputing II - Group 6
 ======================================
 
 Our genome browser can be found at: 
