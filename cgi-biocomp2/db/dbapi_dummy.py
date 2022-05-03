@@ -20,7 +20,7 @@ def getAllEntries():
     dbpassword = 'w3jatiunb'
 
 
-    sql = 'select * from chromosome_1 LIMIT 20'
+    sql = 'select * from chromosome_1 LIMIT 100'
 
     db = pymysql.connect(host=dbhost, user = dbuser, db = dbname, passwd = dbpassword)
 

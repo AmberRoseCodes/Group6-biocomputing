@@ -364,17 +364,18 @@ def aa_alignment_string(ac):
     aa_count=0
     exon_binary=exon_string(ac)
     for i in range(0,len(exon_binary),1):
-        try:
-            if exon_binary[i]=='*'and x==0:
+
+        if exon_binary[i]=='*'and x==0:
+            try:
                protein_mapping.append(aa_string[aa_count])
                x+=1
                aa_count+=1       
-        except:
-            pass
-        if exon_binary[i]=='*'and x==1:
+            except:
+               pass
+        elif exon_binary[i]=='*'and x==1:
             protein_mapping.append('.')
             x+=1
-        if exon_binary[i]=='*'and x==2:
+        elif exon_binary[i]=='*'and x==2:
             protein_mapping.append('.')
             x=0
         
