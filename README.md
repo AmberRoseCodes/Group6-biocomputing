@@ -12,7 +12,7 @@ By copying this repository locally, updating the config.py file with your home d
 
 This web application is made up of 3 (+ and additional front end) each led by an individual on the team, all code documentation and reflective essays are stored in the following folders: 
 
-### Data Layer
+### Database Layer
 Denzel Eggerue: createdb/docs
 
 ### Business Logic Layer
