@@ -1,12 +1,12 @@
 Biocomputing II / cgi-biocomp2/cgi
 ==================================
 
-This directory contains the code for the CGI scripts.
+Author - Hirushi Rajapakse & Amber Hilton 03.05.2022
 
-Note that I have given the CGI scripts an extension of .cgi rather than
-.py, but they are still python programs!
+Please find Hirushi Rajapakse essay saved in Group6-biocomputing/cgi-biocomp2/cgi/docs/
 
-It imports the `blapi.py` module from the `../bl` directory.
+Please find the URL for accessing the database: https://student.cryst.bbk.ac.uk/~ph001/biocomp2demo/
 
-There would be a `cgi2` directory if there is an alternative front end.
+The CGI scripts for listall.cgi and search.cgi completes the process of extracting each entry from business logic layer to present as multiple detailed tables in a HTML format.
+
 
